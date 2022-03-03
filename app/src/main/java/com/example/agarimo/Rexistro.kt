@@ -3,44 +3,66 @@ package com.example.agarimo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class Rexistro : AppCompatActivity() {
-    /*
-    private lateinit var auth:FirebaseAuth
+
+    private val TAG="RealTime"
+    private lateinit var database: DatabaseReference
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        /*IDEAZA
+        Thread.sleep(2000)
+        setTheme(R.layout.pantallainicial)*/
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rexistro)
 
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        val mDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference()
+
+        //Botones
+        val botonRexistro: Button = findViewById(R.id.botonRexitro)
+        val botonInicio: Button= findViewById(R.id.botonInicio)
+        val emailEditText: TextView= findViewById(R.id.emailEditText)
+        val passwordEditText: TextView= findViewById(R.id.passwordEditText)
         //Analytics Event
-        val analytics =FirebaseAnalytics.getInstance(this)
-        val bundle=Bundle()
-        bundle.putString("message","Integracion de Firebase completa")
-        analytics.logEvent("InitScreen",bundle)
 
-        //Setup
-        setup()
-    }
-
-    private fun setup() {
-        title = "Autentificación"
-
-
+        //Rexistro
         botonRexistro.setOnClickListener{
-            if (emailEditText.text.isNotEmpty() && passwordEditText.text,isNotEmpty()){
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
+            mAuth.createUserWithEmailAndPassword(
                 emailEditText.text.toString(),
                 passwordEditText.text.toString()).addOnCompleteListener{
                     if(it.isSuccessful){
-
+                        showMaps()
                     }else{
                         showAlert()
                     }
             }
+            }
+        }
+        //Inicio
+        botonInicio.setOnClickListener{
+            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
+                mAuth.signInWithEmailAndPassword(
+                    emailEditText.text.toString(),
+                    passwordEditText.text.toString()).addOnCompleteListener{
+                    if(it.isSuccessful){
+                        showMaps()
+                    }else{
+                        showAlert()
+                    }
+                }
             }
         }
     }
@@ -55,12 +77,8 @@ class Rexistro : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showMaps(email: String, provider: ProviderType){
-
-        val homeIntent= Intent{,MapsActivity::class.java}.apply{
-            PutExtra{"email",email}
-            PutExtra{"provider",provider.name}
-        }
-        startActivity(homeIntent)
-    }*/
+    private fun showMaps(){
+        val mapIntent= Intent(this,MapsActivity::class.java)
+        startActivity(mapIntent)
+    }
 }
