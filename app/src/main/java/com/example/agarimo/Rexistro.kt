@@ -20,9 +20,9 @@ class Rexistro : AppCompatActivity() {
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        /*IDEAZA
+        //IDEAZA
         Thread.sleep(2000)
-        setTheme(R.layout.pantallainicial)*/
+        setTheme(R.style.Theme_Agarimo)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rexistro)

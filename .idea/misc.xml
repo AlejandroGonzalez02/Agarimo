@@ -5,11 +5,14 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/splashscreen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_entrada.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/activity_rexistro.xml" value="0.2696817420435511" />
+        <entry key="app/src/main/res/layout/blank_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_entrada.xml" value="0.335" />
         <entry key="app/src/main/res/layout/pantallainicial.xml" value="0.15172101449275363" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.22135416666666666" />
       </map>
     </option>
   </component>
